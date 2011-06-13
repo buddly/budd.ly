@@ -13,7 +13,7 @@ u1 = User.create(
   :password   => 'ChangeMe!',
   :password_confirmation => 'ChangeMe!'
 )
-u1.is_superadmin = true
+u1.superadmin = true
 u1.confirmed_at  = Time.now.utc
 u1.save
 
@@ -24,6 +24,6 @@ u2 = User.create(
   :password   => 'ChangeMe!',
   :password_confirmation => 'ChangeMe!'
 )
-u2.is_superadmin = true
+u2.superadmin = true
 u2.confirmed_at  = Time.now.utc
 u2.save
