@@ -1,0 +1,10 @@
+<div id="flash-container">
+  <% [:notice, :alert].each do |type| -%>
+    <% if flash[type] -%>
+      <div class="<%= type %>">
+        <%= link_to_function 'x', '$(this).parent().fadeOut();', :class => 'dismiss' %>
+        <%= flash[type].html_safe %>
+      </div>
+    <% end -%>
+  <% end -%>
+</div>

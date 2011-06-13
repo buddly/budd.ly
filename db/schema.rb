@@ -10,7 +10,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110527143209) do
+ActiveRecord::Schema.define(:version => 20110611185532) do
+
+  create_table "goals", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "is_private"
+    t.integer  "creator_id"
+    t.date     "ends_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "milestones", :force => true do |t|
+    t.integer  "goal_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "stage"
+    t.datetime "ends_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "participations", :force => true do |t|
+    t.integer  "goal_id"
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rails_admin_histories", :force => true do |t|
     t.string   "message"
@@ -50,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20110527143209) do
     t.string   "state"
     t.string   "postal_code"
     t.string   "organization_name"
-    t.boolean  "is_superadmin",                         :default => false
+    t.boolean  "superadmin",                            :default => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

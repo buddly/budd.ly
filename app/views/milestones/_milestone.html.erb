@@ -1,0 +1,10 @@
+<div class="milestone">
+  <p>
+    <strong><%= milestone.name %></strong>: 
+    <%= milestone.description %>
+  </p>
+  <p>
+    <strong>Ends at:</strong>
+    <%= l(milestone.ends_at, :format => :mdy) %>
+  </p>
+</div>

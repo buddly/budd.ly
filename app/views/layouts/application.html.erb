@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Buddly</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+  <head>
+    <title>Buddly</title>
+    <%= stylesheet_link_tag :all %>
+    <%= stylesheet_link_tag 'jqui/smoothness/jquery-ui-1.8.13.custom.css', 'css3buttons' %>
+    <%= javascript_include_tag :defaults, 'jqt/overlay', 'jqt/overlay.apple', 'jqt/toolbox.expose' %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+  
+    <header>
+      <nav>
+        <ul class="hmenu">
+          <li>Buddly: </li>
+          <li><%= link_to 'Home', root_path %></li>
+          <%= render 'devise/menu/registration_items' %>
+          <%= render 'devise/menu/login_items' %>
+        </ul>
+      </nav>
+    </header>
 
-<%= yield %>
+    <%= yield %>
 
-</body>
+    <footer></footer>
+    
+    <%= render :partial => 'shared/flash_messages' %>
+
+  </body>
 </html>

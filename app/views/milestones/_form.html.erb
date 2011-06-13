@@ -1,0 +1,15 @@
+
+<%= form_errors_for(@milestone) %>
+
+<div class="fields">
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+</div>
+<div class="fields">
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+</div>
+<div class="fields">
+  <%= form.label :ends_at %>
+  <%= form.text_field :ends_at, :class => 'datepicker' %>
+</div>

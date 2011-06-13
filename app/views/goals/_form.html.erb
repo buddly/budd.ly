@@ -1,0 +1,53 @@
+<%= form_for(@goal) do |f| %>
+  <%= form_errors_for(@goal) %>
+
+  <div class="fields">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :ends_at %>
+    <%= f.text_field :ends_at, :class => 'datepicker' %>
+    <div>(optional)</div>
+  </div>
+  
+  <div class="fields">
+    <%= f.check_box :is_private %>
+    <%= f.label :is_private, 'Hide this goal from public view?', :class => 'inline' %>
+  </div>
+
+  <% unless @goal.new_record? -%>
+    <hr/>
+    <div>
+      <h3>Milestones</h3>
+      
+      <div id="goal-milestones-container">
+        <% if @goal.milestones.empty? %><div id="no-milestones-message">(there are no milestones yet)</div><% end %>
+        <%= render :partial => 'milestones/milestone', :collection => @goal.milestones %>
+      </div>
+      
+      <a href="<%= new_goal_milestone_path(@goal) %>" id="milestone_overlay_a" rel="#milestone_overlay" style="text-decoration:none">
+      	<button type="button" class="button positive"><span class="icon plus"></span> add a milestone</button>	
+      </a>
+      
+    </div>
+    <hr/>
+  <% end -%>
+
+  <div class="actions">
+    <%= submit_button_for(f) %>
+  </div>
+<% end %>
+
+<!-- overlayed element -->
+<div class="apple_overlay" id="milestone_overlay">
+	<!-- the external content is loaded inside this tag -->
+	<div class="contentWrap"></div>
+
+</div>

@@ -1,17 +1,40 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :lockable, :timeoutable and :omniauthable
+  # :token_authenticatable, :lockable, :encryptable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :trackable,
         :validatable,
-        # :encryptable,
         :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :first_name, :last_name, :address_line_1, :address_line_2, :city,
     :state, :postal_code, :organization_name
+  
+  has_many :participations, :uniq => true
+  has_many :goals, :foreign_key => :creator_id
+  has_many :student_goals, :through => :participations, :class_name => 'Goal',
+    :conditions => "participations.role = 'student'",
+    :uniq => true
+  has_many :mentor_goals, :through => :participations, :class_name => 'Goal',
+    :conditions => "participations.role = 'mentor'",
+    :uniq => true
+  
+  # email and password validation already handled by Devise
+  
+  validates :first_name,
+    :presence => true
+
+  validates :last_name,
+    :presence => true
+    
+  def created_goals
+    Goal.created_by(self)
+  end
+  
 end
+
+
 
 
 # == Schema Information
@@ -43,5 +66,6 @@ end
 #  state                  :string(255)
 #  postal_code            :string(255)
 #  organization_name      :string(255)
+#  superadmin             :boolean         default(FALSE)
 #
 

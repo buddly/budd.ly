@@ -1,0 +1,115 @@
+body {
+  background-color: #f0f0f0;
+  color: #333;
+  font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+  font-size: 13px;
+  margin: 0 0 25px 0;
+  padding: 25px;
+  text-shadow:1px 1px 1px #ccc;
+}
+header nav{
+  background-color:#eee;
+  padding:5px;
+  text-shadow:0 0 0 transparent;
+}
+ul.hmenu {
+  list-style: none;
+  margin:0;
+  padding: 0;
+}
+
+ul.hmenu li {
+  display: inline-block;
+  margin-left:5px;
+}
+
+/*
+ * form fields
+*/
+form .fields{
+  margin-bottom:15px;
+}
+form .fields label{
+  display:block;
+  font-weight:bold;
+}
+form .fields label.inline{
+  display:inline;
+}
+form .actions{
+  margin:15px auto;
+}
+
+#ui-datepicker-div {
+  font-size: 10pt;
+  padding:10px;
+  box-shadow:1px 1px 10px #999;
+  -moz-box-shadow:1px 1px 10px #999;
+  -webkit-box-shadow:1px 1px 10px #999;
+}
+
+
+/*
+ * flash messages
+*/
+#flash-container{
+/*  display:none;*/
+  margin:0 auto;
+  position:absolute;
+  text-align:center;
+  top:500%;
+  width:93%;
+  z-index:9999;
+}
+#flash-container .notice,
+#flash-container .alert{
+  border:5px solid;
+  margin:15px auto;
+  opacity:0.85;
+  padding:15px;
+  position:relative;
+  width:85%;
+  -moz-border-radius:12px;
+  -webkit-border-radius:12px;
+  box-shadow:0 0 10px #777;
+}
+#flash-container .notice{
+  background-color:#cfc;
+  border-color:#090;
+  font-weight:bold;
+}
+#flash-container .alert{
+  background-color:#fcc;
+  border-color:#900;
+  font-weight:bold;
+}
+#flash-container .dismiss{
+  background-color:#fff;
+  border:2px solid #999;
+  color:#333;
+  cursor:pointer;
+  float:right;
+  font-size:10pt;
+  line-height:8pt;
+  padding:2px 3px 3px 4px;
+  position:absolute;
+  right:-10px;
+  text-decoration:none;
+  top:-10px;
+  -moz-border-radius:99px;
+  -webkit-border-radius:99px;
+  box-shadow:0 0 5px #777;
+}
+#flash-container .dismiss:hover{
+  background-color:#f00;
+  border-color:#fff;
+  color:#fff;
+}
+
+.button .icon{
+  vertical-align:bottom;
+}
+div.milestone{
+  border-bottom:1px solid #ccc;
+  margin:10px 25px;
+}

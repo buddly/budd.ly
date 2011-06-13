@@ -7,12 +7,33 @@ class UserTest < ActiveSupport::TestCase
     assert user.valid?
   end
   
-  test 'user should not be superadmin' do
+  test 'user should not be superadmin by default' do
     user = Factory(:user)
     assert !user.is_superadmin?
   end
+  
+  test 'created goals should include only own goals' do
+    user1 = Factory(:user)
+    user2 = Factory(:user)
+    goal11 = Factory(:goal, :creator => user1)
+    goal12 = Factory(:goal, :creator => user1)
+    goal21 = Factory(:goal, :creator => user2)
+    goal22 = Factory(:goal, :creator => user2)
+    
+    assert user1.created_goals.include?(goal11)
+    assert user1.created_goals.include?(goal12)
+    assert !user1.created_goals.include?(goal21)
+    assert !user1.created_goals.include?(goal22)
+    
+    assert user2.created_goals.include?(goal21)
+    assert user2.created_goals.include?(goal22)
+    assert !user2.created_goals.include?(goal11)
+    assert !user2.created_goals.include?(goal12)
+  end
 
 end
+
+
 
 
 # == Schema Information
@@ -44,5 +65,6 @@ end
 #  state                  :string(255)
 #  postal_code            :string(255)
 #  organization_name      :string(255)
+#  superadmin             :boolean         default(FALSE)
 #
 

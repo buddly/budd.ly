@@ -1,0 +1,14 @@
+<h1>New milestone</h1>
+
+<%= form_for([@goal, @milestone], :remote => request.xhr?) do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+  <div class="actions">
+    <%= submit_button_for(form) %>
+  </div>
+<% end -%>
+
+<% if request.xhr? -%>
+  <%= link_to_function 'cancel', 'Buddly.close_overlay("milestone")' %>
+<% else -%>
+  <%= link_to 'cancel', goal_milestones_path(@goal) %>
+<% end -%>

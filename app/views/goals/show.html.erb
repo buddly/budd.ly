@@ -1,0 +1,15 @@
+<p>
+  <strong>Name:</strong><br/>
+  <%= @goal.name %>
+</p>
+<p>
+  <strong>Description:</strong><br/>
+  <%= @goal.description %>
+</p>
+<p>
+  <strong>Ends at:</strong><br/>
+  <%= @goal.ends_at || '(no end date)' %>
+</p>
+
+<%= link_to 'Edit', edit_goal_path(@goal) %> |
+<%= link_to 'Back', goals_path %>

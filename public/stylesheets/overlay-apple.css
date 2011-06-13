@@ -1,0 +1,36 @@
+
+/* the overlayed element */
+.apple_overlay {
+	background-color:#fff;
+	-moz-border-radius:12px;
+	-webkit-border-radius:12px;
+  box-shadow:0 0 10px 10px #999;
+  -moz-box-shadow:0 0 10px 10px #999;
+  -webkit-box-shadow:0 0 10px 10px #999;
+	display:none;	
+	padding:35px;
+	
+	width:640px;	
+}
+
+/* default close button positioned on upper right corner */
+.apple_overlay .close {
+	background-image:url(/images/overlay/close.png);
+	cursor:pointer;
+	height:35px;
+	position:absolute;
+	right:-10px;
+	top:-10px;
+	width:35px;
+}
+
+.apple_overlay .close:hover {
+  background-color:transparent;
+}
+
+.apple_overlay .close.link{
+  background-image:none;
+  height:auto;
+  position:static;
+  width:auto;
+}
