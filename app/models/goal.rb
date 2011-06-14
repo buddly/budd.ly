@@ -19,6 +19,7 @@ class Goal < ActiveRecord::Base
   scope :created_by, lambda{|user| where(:creator_id => user.id)}
   scope :participant, lambda{|user| where("participations.user_id = ?", user.id).joins('left join participations on participations.goal_id = goals.id')}
   scope :creator_or_participant, lambda{|user| where("(goals.creator_id = ? or participations.user_id = ?)", user.id, user.id).joins('left join participations on participations.goal_id = goals.id')}
+  scope :public, where(:is_private => false)
   
   def ongoing?
     ends_at.blank?

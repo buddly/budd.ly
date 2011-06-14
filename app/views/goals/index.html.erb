@@ -13,9 +13,13 @@
     <td><%= goal.name %></td>
     <td><%= goal.description %></td>
     <td><%= goal.ends_at || "(no end date)" %></td>
-    <td><%= link_to 'Show', goal %></td>
-    <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-    <td><%= link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <% if user_signed_in? -%>
+        <%= link_to 'Show', goal %>
+        <%= link_to 'Edit', edit_goal_path(goal) %>
+        <%= link_to 'Destroy', goal, :confirm => 'Are you sure?', :method => :delete %>
+      <% end -%>
+    </td>
   </tr>
 <% end %>
 </table>

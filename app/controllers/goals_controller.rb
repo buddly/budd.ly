@@ -6,7 +6,11 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.xml
   def index
-    @goals = Goal.all
+    if user_signed_in?
+      @goals = current_user.goals.all
+    else
+      @goals = Goal.public.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
