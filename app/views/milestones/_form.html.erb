@@ -10,6 +10,10 @@
   <%= form.text_field :description %>
 </div>
 <div class="fields">
+  <%= form.label :stage %>
+  <%= form.select :stage, Milestone::STAGES %>
+</div>
+<div class="fields">
   <%= form.label :ends_at %>
-  <%= form.text_field :ends_at, :class => 'datepicker' %>
+  <%= form.text_field :ends_at, :class => 'datepicker', :value => format_date(@milestone.ends_at, :mdy) %>
 </div>

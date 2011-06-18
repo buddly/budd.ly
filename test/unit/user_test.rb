@@ -9,7 +9,7 @@ class UserTest < ActiveSupport::TestCase
   
   test 'user should not be superadmin by default' do
     user = Factory(:user)
-    assert !user.is_superadmin?
+    assert !user.superadmin?
   end
   
   test 'created goals should include only own goals' do

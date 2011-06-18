@@ -9,7 +9,6 @@ class MilestonesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @milestones }
     end
   end
 
@@ -20,7 +19,6 @@ class MilestonesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @milestone }
     end
   end
 
@@ -31,13 +29,13 @@ class MilestonesController < ApplicationController
 
     respond_to do |format|
       format.html { render :layout => !request.xhr? } # new.html.erb
-      format.xml  { render :xml => @milestone }
     end
   end
 
   # GET /milestones/1/edit
   def edit
     @milestone = @goal.milestones.find(params[:id])
+    render :layout => !request.xhr?
   end
 
   # POST /milestones
@@ -64,10 +62,10 @@ class MilestonesController < ApplicationController
     respond_to do |format|
       if @milestone.update_attributes(params[:milestone])
         format.html { redirect_to([@goal, @milestone], :notice => 'Milestone was successfully updated.') }
-        format.xml  { head :ok }
+        format.js
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @milestone.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -80,7 +78,7 @@ class MilestonesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(goal_milestones_url(@goal)) }
-      format.xml  { head :ok }
+      format.js
     end
   end
 end

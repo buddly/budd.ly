@@ -7,8 +7,8 @@
 
 if @milestone.valid?
   page << '$("#no-milestones-message").fadeOut();'
-  page << 'Buddly.close_overlay("milestone");'
   page.insert_html 'append', '#goal-milestones-container', :partial => 'milestones/milestone', :object => @milestone
+  page << 'Buddly.close_overlay(); Buddly.init_overlays();'
 end
 
 ajax_flash(page)

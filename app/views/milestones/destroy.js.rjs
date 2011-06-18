@@ -1,0 +1,5 @@
+if @milestone.destroyed?
+  page << %Q[$("#milestone_#{@milestone.id}").fadeOut();]
+end
+
+ajax_flash(page)

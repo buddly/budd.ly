@@ -8,8 +8,19 @@
 </p>
 <p>
   <strong>Ends at:</strong><br/>
-  <%= @goal.ends_at || '(no end date)' %>
+  <%= format_date(@goal.ends_at, :mdy) || '(no end date)' %>
 </p>
+
+<hr/>
+<div>
+  <h3>Milestones</h3>
+  
+  <div id="goal-milestones-container">
+    <% if @goal.milestones.empty? %><div id="no-milestones-message">(there are no milestones yet)</div><% end %>
+    <%= render :partial => 'milestones/milestone', :collection => @goal.milestones %>
+  </div>  
+</div>
+<hr/>
 
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>

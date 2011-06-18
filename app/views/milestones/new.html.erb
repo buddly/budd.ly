@@ -8,7 +8,7 @@
 <% end -%>
 
 <% if request.xhr? -%>
-  <%= link_to_function 'cancel', 'Buddly.close_overlay("milestone")' %>
+  <%= link_to_function 'cancel', 'Buddly.close_overlay()' %>
 <% else -%>
   <%= link_to 'cancel', goal_milestones_path(@goal) %>
 <% end -%>

@@ -14,10 +14,15 @@ module ApplicationHelper
     page << "Buddly.show_flash_messages();"
   end
   
-
   def form_errors_for(object)
     render :partial => 'shared/form_errors_for', :locals => {:object => object}
     flash.clear
+  end
+  
+  def format_date(date, format)
+    if date.present?
+      l(@milestone.ends_at, :format => :mdy)
+    end
   end
   
   # seems that css3buttons doesn't work with <input> elements, only <a> and

@@ -1,0 +1,14 @@
+
+# 
+# if successful, close overlay 
+# 
+# update milestone in list
+# 
+
+if @milestone.valid?
+  page.replace "milestone_#{@milestone.id}", :partial => 'milestones/milestone', :object => @milestone
+  page << 'Buddly.close_overlay();'
+  page << "Buddly.init_overlays();"
+end
+
+ajax_flash(page)

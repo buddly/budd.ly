@@ -1,9 +1,19 @@
 class Milestone < ActiveRecord::Base
   
+  STAGES = ["Not Started", "In Progress", "Completed", "Approved"]
+  
   belongs_to :goal
   
   validates :name, :presence => true
-  validates :ends_at, :presence => true, :date => {:after => Time.now.to_date}
+  validates :ends_at, :presence => true, :date => true
+  
+  before_create :init_stage
+  
+  protected
+  
+  def init_stage
+    self.stage = STAGES.first unless self.stage.present?
+  end
   
 end
 

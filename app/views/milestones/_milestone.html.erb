@@ -1,10 +1,23 @@
-<div class="milestone">
+<div class="milestone" id="<%= "milestone_#{milestone.id}" %>">
   <p>
     <strong><%= milestone.name %></strong>: 
     <%= milestone.description %>
   </p>
   <p>
-    <strong>Ends at:</strong>
-    <%= l(milestone.ends_at, :format => :mdy) %>
+    <strong>Stage:</strong>
+    <%= milestone.stage %>
   </p>
+  <p>
+    <strong>Ends at:</strong>
+    <%= format_date(milestone.ends_at, :mdy) %>
+  </p>
+  
+  <% if params[:action] == 'edit' -%>
+  <p>
+    <%= link_to 'Edit', edit_goal_milestone_path(@goal, milestone), :class => 'overlay', :rel => '#milestone_overlay' %>
+    -
+    <%= link_to 'Delete', [@goal, milestone], :method => 'delete', :confirm => 'Are you sure?', :remote => true %>
+  </p>
+  <% end -%>
+  
 </div>
